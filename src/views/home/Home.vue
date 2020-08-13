@@ -53,7 +53,9 @@
             <subMenu :sumenulist="menulist"></subMenu>
           </el-menu>
         </el-aside>
-        <el-main>Main</el-main>
+        <el-main>
+          <router-view />
+        </el-main>
       </el-container>
     </el-container>
   </div>
@@ -67,7 +69,7 @@ export default {
     return {
       isCollapse: false, //控制左侧导航展开和伸缩
       menulist: [],
-      activepath:''//点击二级菜单获取的下标
+      activepath: "", //点击二级菜单获取的下标
     };
   },
   components: {
@@ -75,7 +77,7 @@ export default {
   },
   created() {
     this.getMenuLists();
-    this.activepath = window.sessionStorage.getItem('activepath')
+    this.activepath = window.sessionStorage.getItem("activepath");
   },
   methods: {
     //获取左侧菜单栏数据
@@ -86,7 +88,6 @@ export default {
       } else {
         this.menulist = res.data;
       }
-      console.log(res);
     },
     conkcollapse() {
       this.isCollapse = !this.isCollapse;

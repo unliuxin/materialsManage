@@ -1,22 +1,31 @@
 <template>
   <div>
-    <el-submenu :index="item.id+''" v-for="item in sumenulist" :key="item.id">
-      <template slot="title">
-        <i :class="item.icon"></i>
-        <span>{{item.menuName}}</span>
-      </template>
-      <subMenu :menulist="item.children"></subMenu>
-      <el-menu-item
-        v-for="item2 in item.children"
-        :key="item2.id"
-        :route="item2.url"
-        :index="'/'+item2.url"
-        @click="getActivePath(item2.url)"
+    <template v-for="item in sumenulist">
+      <el-submenu
+        :disabled="item.disabled"
+        :index="item.id+''"
+        v-if="item.children.length>0"
+        :key="item.id"
       >
-        <i :class="item2.icon"></i>
-        <span :index="item2.url+''">{{item2.menuName}}</span>
+        <template slot="title">
+          <i :class="item.icon"></i>
+          <span>{{item.menuName}}</span>
+        </template>
+        <subMenu :sumenulist="item.children"></subMenu>
+      </el-submenu>
+      <el-menu-item
+        v-else
+        :disabled="item.disabled"
+        
+        :key="item.id"
+        :route="item.url"
+        :index="'/'+item.url"
+        @click="getActivePath(item.url)"
+      >
+        <i :class="item.icon"></i>
+        <span :index="item.url+''">{{item.menuName}}</span>
       </el-menu-item>
-    </el-submenu>
+    </template>
   </div>
 </template>
 

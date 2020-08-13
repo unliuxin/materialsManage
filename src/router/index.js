@@ -4,6 +4,11 @@ import VueRouter from 'vue-router'
 import Login from '../components/common/login/Login.vue'
 import Home from '../views/home/Home.vue'
 import Welcome from '../views/home/homeChild/Welcome.vue'
+import Atttachments from '../views/systemman/Attachments.vue'
+import Users from '../views/systemman/Users.vue'
+import Map from '../views/health/Map.vue'
+import Stocks from '../views/businessman/Stocks.vue'
+import outStocks from '../views/businessman/outStocks.vue'
 
 Vue.use(VueRouter)
 
@@ -20,9 +25,30 @@ const routes = [{
         component: Home,
         redirect: '/welcome',
         children: [{
-            path: '/welcome',
-            component: Welcome
-        }, ]
+                path: '/welcome',
+                component: Welcome
+            },
+            {
+                path: '/attachments',
+                component: Atttachments
+            },
+            {
+                path: '/users',
+                component: Users
+            },
+            {
+                path: '/map',
+                component: Map
+            },
+            {
+                path: '/stocks',
+                component: Stocks
+            },
+            {
+                path: '/outStocks',
+                component: outStocks
+            },
+        ]
     }
 ]
 
