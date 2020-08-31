@@ -33,7 +33,7 @@ export default {
       isShow: false, //滑块验证码模态框是否出现
       checked: true,
       formData: {
-        username: "系统测试人员",
+        username: "admin",
         password: "123456",
       },
       formRules: {
